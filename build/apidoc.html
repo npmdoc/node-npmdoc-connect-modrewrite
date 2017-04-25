@@ -61,12 +61,134 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.connect-modrewrite">module connect-modrewrite</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.connect-modrewrite.connect-modrewrite">
+            function <span class="apidocSignatureSpan"></span>connect-modrewrite
+            <span class="apidocSignatureSpan">(rules)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.connect-modrewrite" id="apidoc.module.connect-modrewrite">module connect-modrewrite</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.connect-modrewrite.connect-modrewrite" id="apidoc.element.connect-modrewrite.connect-modrewrite">
+        function <span class="apidocSignatureSpan"></span>connect-modrewrite
+        <span class="apidocSignatureSpan">(rules)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">connect-modrewrite = function (rules) {
+  // Parse the rules to get flags, replace and match pattern
+  rules = _parse(rules);
+
+  return function(req, res, next) {
+    var protocol = req.connection.encrypted || req.headers[&#x27;x-forwarded-proto&#x27;] === &#x27;https&#x27; ? &#x27;https&#x27; : &#x27;http&#x27;;
+    var callNext = true;
+
+    rules.some(function(rule) {
+
+      if(rule.host) {
+        if(!rule.host.test(req.headers.host)) {
+          return false;
+        }
+      }
+
+      var location;
+      if(/\:\/\//.test(rule.replace)) {
+        location = req.url.replace(rule.regexp, rule.replace);
+      }
+      else {
+        location = protocol + &#x27;://&#x27; + req.headers.host + req.url.replace(rule.regexp, rule.replace);
+      }
+
+      var match = rule.regexp.test(req.url);
+
+      // If not match
+      if(!match) {
+        // Inverted rewrite
+        if(rule.inverted) {
+          req.url = rule.replace;
+          return rule.last;
+        }
+
+        return false;
+      }
+
+      // Type
+      if(rule.type) {
+        res.setHeader(&#x27;Content-Type&#x27;, rule.type);
+      }
+
+      // Gone
+      if(rule.gone) {
+        res.writeHead(410);
+        res.end();
+        callNext = false;
+        return true;
+      }
+
+      // Forbidden
+      if(rule.forbidden) {
+        res.writeHead(403);
+        res.end();
+        callNext = false;
+        return true;
+      }
+
+      // Proxy
+      if(rule.proxy) {
+        _proxy(rule, {
+          protocol : protocol,
+          req : req,
+          res : res,
+          next : next
+        });
+        callNext = false;
+        return true;
+      }
+
+      // Redirect
+      if(rule.redirect) {
+        res.writeHead(rule.redirect, {
+          Location : location
+        });
+        res.end();
+        callNext = false;
+        return true;
+      }
+
+      // Rewrite
+      if(!rule.inverted) {
+        if (rule.replace !== &#x27;-&#x27;) {
+          req.url = req.url.replace(rule.regexp, rule.replace);
+        }
+        return rule.last;
+      }
+    });
+
+    // Add to query object
+    var queryValue = querySyntax.exec(req.url);
+    if(queryValue) {
+      req.params = req.query = qs.parse(queryValue[1]);
+    }
+
+    if(callNext) {
+      next();
+    }
+
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 

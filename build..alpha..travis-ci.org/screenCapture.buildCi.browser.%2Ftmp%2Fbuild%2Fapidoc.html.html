@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/tinganho/connect-modrewrite#readme"
-
-    >connect-modrewrite (v0.10.1)</a>
+    <a href="https://github.com/tinganho/connect-modrewrite#readme">connect-modrewrite (v0.10.1)</a>
 </h1>
 <h4>connect-modrewrite adds modrewrite functionality to connect/express server</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.connect-modrewrite">module connect-modrewrite</a><ol>
 
@@ -90,7 +83,7 @@
   rules = _parse(rules);
 
   return function(req, res, next) {
-    var protocol = req.connection.encrypted || req.headers[&#x27;x-forwarded-proto&#x27;] === &#x27;https&#x27; ? &#x27;https&#x27; : &#x27;http&#x27;;
+    var protocol = req.connection.encrypted || req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
     var callNext = true;
 
     rules.some(function(rule) {
@@ -102,11 +95,11 @@
       }
 
       var location;
-      if(/\:\/\//.test(rule.replace)) {
+      if(/\:\/\//.test(rule.replace))Â&nbsp;{
         location = req.url.replace(rule.regexp, rule.replace);
       }
       else {
-        location = protocol + &#x27;://&#x27; + req.headers.host + req.url.replace(rule.regexp, rule.replace);
+        location = protocol + '://' + req.headers.host + req.url.replace(rule.regexp, rule.replace);
       }
 
       var match = rule.regexp.test(req.url);
@@ -124,7 +117,7 @@
 
       // Type
       if(rule.type) {
-        res.setHeader(&#x27;Content-Type&#x27;, rule.type);
+        res.setHeader('Content-Type', rule.type);
       }
 
       // Gone
@@ -167,7 +160,7 @@
 
       // Rewrite
       if(!rule.inverted) {
-        if (rule.replace !== &#x27;-&#x27;) {
+        if (rule.replace !== '-') {
           req.url = req.url.replace(rule.regexp, rule.replace);
         }
         return rule.last;
@@ -198,3 +191,4 @@
     ]
 </div>
 </div>
+</body></html>
