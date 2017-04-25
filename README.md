@@ -1,9 +1,14 @@
-# api documentation for  [connect-modrewrite (v0.10.1)](https://github.com/tinganho/connect-modrewrite#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-connect-modrewrite.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-connect-modrewrite) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-connect-modrewrite.svg)](https://travis-ci.org/npmdoc/node-npmdoc-connect-modrewrite)
+# npmdoc-connect-modrewrite
+
+#### basic api documentation for  [connect-modrewrite (v0.10.1)](https://github.com/tinganho/connect-modrewrite#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-connect-modrewrite.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-connect-modrewrite) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-connect-modrewrite.svg)](https://travis-ci.org/npmdoc/node-npmdoc-connect-modrewrite)
+
 #### connect-modrewrite adds modrewrite functionality to connect/express server
 
-[![NPM](https://nodei.co/npm/connect-modrewrite.png?downloads=true)](https://www.npmjs.com/package/connect-modrewrite)
+[![NPM](https://nodei.co/npm/connect-modrewrite.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/connect-modrewrite)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-connect-modrewrite%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-connect-modrewrite/build/screenCapture.npmPackageListing.svg)
 
@@ -17,16 +22,14 @@
 
 {
     "author": {
-        "name": "Tingan Ho",
-        "email": "tingan87@gmail.com"
+        "name": "Tingan Ho"
     },
     "bugs": {
         "url": "https://github.com/tinganho/connect-modrewrite/issues"
     },
     "contributors": [
         {
-            "name": "Tingan Ho",
-            "email": "tingan87@gmail.com"
+            "name": "Tingan Ho"
         }
     ],
     "dependencies": {
@@ -62,13 +65,11 @@
     "main": "./index.js",
     "maintainers": [
         {
-            "name": "tinganho",
-            "email": "tingan87@gmail.com"
+            "name": "tinganho"
         }
     ],
     "name": "connect-modrewrite",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/tinganho/connect-modrewrite.git"
@@ -76,19 +77,10 @@
     "scripts": {
         "test": "./bin/test"
     },
-    "version": "0.10.1"
+    "version": "0.10.1",
+    "bin": {}
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module connect-modrewrite](#apidoc.module.connect-modrewrite)
-
-
-
-# <a name="apidoc.module.connect-modrewrite"></a>[module connect-modrewrite](#apidoc.module.connect-modrewrite)
 
 
 
